@@ -107,4 +107,9 @@ class UtilTest {
     fun `Email with special characters in domain is not valid`() {
         assertFalse(Util.isValidEmail("user@exa!mple.com"))
     }
+
+    @Test
+    fun `Phone without format expected`() {
+        assertTrue(Util.isValidPhoneNumber("+525512345678"))
+    }
 }
