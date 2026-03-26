@@ -107,4 +107,58 @@ class UtilTest {
     fun `Email with special characters in domain is not valid`() {
         assertFalse(Util.isValidEmail("user@exa!mple.com"))
     }
+
+    // Valid phone number cases
+
+    @Test
+    fun `International phone number with country code is valid`() {
+        assertTrue(Util.isValidPhoneNumber("+525512345678"))
+    }
+
+    @Test
+    fun `Phone number with minimum length of seven digits is valid`() {
+        assertTrue(Util.isValidPhoneNumber("1234567"))
+    }
+
+    @Test
+    fun `Phone number in US format with parentheses is valid`() {
+        assertTrue(Util.isValidPhoneNumber("(555) 123-4567"))
+    }
+
+    @Test
+    fun `Phone number with dots as separators is valid`() {
+        assertTrue(Util.isValidPhoneNumber("555.123.4567"))
+    }
+
+    @Test
+    fun `Full international phone number with spaces is valid`() {
+        assertTrue(Util.isValidPhoneNumber("+1 (800) 555-0123"))
+    }
+
+    // Invalid phone number cases
+
+    @Test
+    fun `Empty string is not a valid phone number`() {
+        assertFalse(Util.isValidPhoneNumber(""))
+    }
+
+    @Test
+    fun `Phone number shorter than seven characters is not valid`() {
+        assertFalse(Util.isValidPhoneNumber("12345"))
+    }
+
+    @Test
+    fun `Phone number longer than twenty characters is not valid`() {
+        assertFalse(Util.isValidPhoneNumber("123456789012345678901"))
+    }
+
+    @Test
+    fun `Phone number with letters is not valid`() {
+        assertFalse(Util.isValidPhoneNumber("abc1234567"))
+    }
+
+    @Test
+    fun `Phone number with letters after plus sign is not valid`() {
+        assertFalse(Util.isValidPhoneNumber("+abc12345"))
+    }
 }
