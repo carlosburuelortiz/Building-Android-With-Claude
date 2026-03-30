@@ -4,18 +4,9 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import mx.buruel.buildingandroidwithclaude.presentation.model.ContactFormUiState
+import mx.buruel.buildingandroidwithclaude.presentation.model.ValidationState
 import mx.buruel.buildingandroidwithclaude.presentation.utils.Util
-
-data class ContactFormUiState(
-    val inputValue: String = "",
-    val validationState: ValidationState = ValidationState.Idle
-)
-
-sealed class ValidationState {
-    object Idle : ValidationState()
-    object Valid : ValidationState()
-    object Invalid : ValidationState()
-}
 
 class ContactFormViewModel : ViewModel() {
 
